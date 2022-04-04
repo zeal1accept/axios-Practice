@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background-color: #bfa;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">点我获取所有人的信息</button>
+    <div id="div1"></div>
+    <script>
+        const btn1 = document.getElementById('btn1');
+
+
+        //axios发送get请求不携带参数   完整版
+        btn1.onclick = () => {
+            const result = axios({
+                url: "http://localhost:5000/persons",
+                method: 'GET',
+                // timeout: 2000,
+
+            }).then(
+                response => {
+                    document.getElementById('div1').innerHTML = JSON.stringify((response.data))
+                },
+                error => {})
+
+        }
+    </script>
+</body>
+
+</html>
